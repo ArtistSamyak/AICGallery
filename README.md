@@ -22,7 +22,7 @@ This application is a sample iOS project demonstrating modern app development pr
 ### Screenshots
 
 <img width="200" alt="Simulator Screenshot - iPhone 16 Pro - 2025-09-08 at 01 23 31" src="https://github.com/user-attachments/assets/aca3931c-f905-48b2-8526-4fc8637779bc" />
-<img width="400" alt="Simulator Screenshot - iPad Pro 13-inch (M4) - 2025-09-08 at 01 25 35" src="https://github.com/user-attachments/assets/14d1fd71-fc8b-4444-af00-7287fdd7bfb3" />
+<img width="580" alt="Simulator Screenshot - iPad Pro 13-inch (M4) - 2025-09-08 at 01 25 35" src="https://github.com/user-attachments/assets/14d1fd71-fc8b-4444-af00-7287fdd7bfb3" />
 
 
 
