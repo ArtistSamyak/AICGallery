@@ -46,6 +46,7 @@ public struct Artwork: Identifiable, Hashable, Sendable {
     }
 }
 
+// TODO: Get the thumbnails from ArtAPIClient instead
 extension Artwork {
     func iiifImageURL(imageID: String, width: Int) -> URL? {
         URL(string: "https://www.artic.edu/iiif/2/\(imageID)/full/\(width),/0/default.jpg")
