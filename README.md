@@ -83,6 +83,7 @@ ParkedRequestQueue (actor), ArtworkEventBus (actor), NetworkMonitor (NWPathMonit
 *	If TTL is stale:
   *	Online: fetch → upsert → emit .pageUpdated.
   *	Offline: park the page request and serve cache (or throw .offlineNoCache).
+*   Bumped up URLCache size for image cache used by AsyncImage.
 
 ---
 
@@ -90,7 +91,7 @@ ParkedRequestQueue (actor), ArtworkEventBus (actor), NetworkMonitor (NWPathMonit
 *	Lazy grid (ArtworkGrid) with dynamic columns based on available width.
 *	Each cell shows a thumbnail (IIIF) and a multi-line title below it.
 *	Subtle fade-in for loaded images and clean placeholders while loading.
-*	Detail view uses a larger IIIF URL 
+*	Detail view uses a larger IIIF URL
 
 ---
 
