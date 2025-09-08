@@ -117,7 +117,7 @@ artistID: 34946, // ← change this to any ArtIC artist_id
 
 #### What I’d do next (nice-to-haves)
 * Byte-level image cache with explicit 5-minute expiry (URLCache configuration or SDWebImageSwiftUI) for more deterministic thumbnail reuse.
-* Add support for more Artists
+* Allow users to select any artist to see their entire collection.
 * Minor refactoring
 
 
