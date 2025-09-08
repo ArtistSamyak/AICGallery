@@ -40,12 +40,12 @@ struct AppContainer {
         cfg.timeoutIntervalForResource = 40
         let apiSession = URLSession(configuration: cfg)
         
-        // 4) Shared services
+        // Shared services
         network = NetworkMonitor()
         apiClient = ArtAPIClient(session: apiSession)
         events = ArtworkEventBus()
         
-        // 5) Repository (posts .pageUpdated, drains parked on reconnect)
+        // Repository (posts .pageUpdated, drains parked on reconnect)
         artworkRepository = ArtworkRepository(
             api: apiClient,
             modelContext: modelContext,
