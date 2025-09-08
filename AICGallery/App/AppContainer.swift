@@ -18,18 +18,34 @@ struct AppContainer {
     let artworkRepository: ArtworkRepository
     
     init() {
-        // SwiftData container with our models
+        // SwiftData container
         let schema = Schema([ArtworkRecord.self, PageRecord.self])
         let config = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
         modelContainer = try! ModelContainer(for: schema, configurations: [config])
         modelContext = ModelContext(modelContainer)
         
-        // Shared services
+        // Bump URLCache for images (AsyncImage uses URLSession.shared)
+        let memoryCap = 100 * 1024 * 1024   // 100 MB RAM
+        let diskCap   = 500 * 1024 * 1024   // 500 MB disk
+        URLCache.shared = URLCache(memoryCapacity: memoryCap,
+                                   diskCapacity: diskCap,
+                                   directory: nil)
+        
+        // Non-caching session for API JSON (keeps domain TTL in charge)
+        let cfg = URLSessionConfiguration.default
+        cfg.urlCache = nil
+        cfg.requestCachePolicy = .reloadRevalidatingCacheData // conditional GETs ok
+        cfg.waitsForConnectivity = false // we handle parking explicitly
+        cfg.timeoutIntervalForRequest = 20
+        cfg.timeoutIntervalForResource = 40
+        let apiSession = URLSession(configuration: cfg)
+        
+        // 4) Shared services
         network = NetworkMonitor()
-        apiClient = ArtAPIClient()
+        apiClient = ArtAPIClient(session: apiSession)
         events = ArtworkEventBus()
         
-        // Repository receives `events` so it can post .pageUpdated
+        // 5) Repository (posts .pageUpdated, drains parked on reconnect)
         artworkRepository = ArtworkRepository(
             api: apiClient,
             modelContext: modelContext,
