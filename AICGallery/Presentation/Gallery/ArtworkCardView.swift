@@ -14,8 +14,7 @@ struct ArtworkCardView: View {
     private let footerHeight: CGFloat = 84
     
     private var thumbURL: URL? {
-        guard !artwork.imageID.isEmpty else { return nil }
-        return URL(string: "https://www.artic.edu/iiif/2/\(artwork.imageID)/full/\(thumbnailWidth),/0/default.jpg")
+        artwork.iiifImageURL(imageID: artwork.imageID, width: thumbnailWidth)
     }
     
     var body: some View {

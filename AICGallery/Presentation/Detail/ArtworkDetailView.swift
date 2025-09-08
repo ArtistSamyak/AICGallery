@@ -12,7 +12,7 @@ struct ArtworkDetailView: View {
     
     // IIIF detail width ~843 recommended
     private var detailURL: URL? {
-        URL(string: "https://www.artic.edu/iiif/2/\(artwork.imageID)/full/843,/0/default.jpg")
+        artwork.iiifImageURL(imageID: artwork.imageID, width: 843)
     }
     
     var body: some View {

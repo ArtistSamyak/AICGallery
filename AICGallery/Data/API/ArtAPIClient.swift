@@ -72,6 +72,7 @@ final class ArtAPIClient: ArtAPIClientProtocol, @unchecked Sendable {
         )
     }
     
+    // We will use these when we implement custom image caching
     func iiifThumbnailURL(imageID: String, width: Int) -> URL {
         // IIIF pattern: /{id}/full/{width},/0/default.jpg
         URL(string: "\(lastKnownIIIFBase)/\(imageID)/full/\(width),/0/default.jpg")!
